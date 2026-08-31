@@ -13,12 +13,7 @@
 
     <title>Jaya | Portfolio</title>
 
-
     <style>
-
-        /* =========================
-           RESET
-        ========================= */
 
         * {
             margin: 0;
@@ -27,158 +22,88 @@
             scroll-behavior: smooth;
         }
 
-
-        /* =========================
-           BODY
-        ========================= */
-
         body {
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
+            font-family: Arial, Helvetica, sans-serif;
             background: #0f172a;
-
             color: #e2e8f0;
-
             line-height: 1.6;
         }
 
-
-        /* =========================
-           NAVBAR
-        ========================= */
+        /* NAVBAR */
 
         nav {
-
             position: sticky;
-
             top: 0;
-
             z-index: 1000;
 
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
 
             padding: 18px 8%;
 
-            background:
-                rgba(15, 23, 42, 0.96);
-
-            border-bottom:
-                1px solid #334155;
-
-            backdrop-filter:
-                blur(10px);
+            background: rgba(15, 23, 42, 0.96);
+            border-bottom: 1px solid #334155;
         }
 
-
         .logo {
-
             font-size: 25px;
-
             font-weight: bold;
-
             color: #38bdf8;
         }
 
-
         nav ul {
-
             display: flex;
-
             gap: 25px;
-
             list-style: none;
         }
 
-
-        nav ul li a {
-
-            text-decoration: none;
-
+        nav a {
             color: #cbd5e1;
-
-            font-size: 15px;
-
-            transition: 0.3s;
+            text-decoration: none;
         }
 
-
-        nav ul li a:hover {
-
+        nav a:hover {
             color: #38bdf8;
         }
 
+        /* STATUS */
 
-        /* =========================
-           ONLINE / OFFLINE STATUS
-        ========================= */
-
-        #connection-status {
-
+        #status {
             position: fixed;
-
             right: 20px;
-
             bottom: 20px;
-
             z-index: 9999;
 
             padding: 10px 18px;
 
             border-radius: 30px;
 
-            font-size: 14px;
-
-            font-weight: bold;
-
             color: white;
-
-            box-shadow:
-                0 5px 20px
-                rgba(0,0,0,0.3);
+            font-size: 14px;
+            font-weight: bold;
         }
 
-
-        /* =========================
-           HERO
-        ========================= */
+        /* HERO */
 
         .hero {
-
             min-height: 90vh;
 
             display: flex;
-
             justify-content: center;
-
             align-items: center;
 
             padding: 70px 8%;
         }
 
-
         .hero-content {
-
-            max-width: 900px;
-
+            max-width: 850px;
             text-align: center;
         }
 
-
         .hero h1 {
-
-            font-size:
-                clamp(45px, 8vw, 85px);
-
+            font-size: clamp(45px, 8vw, 85px);
             line-height: 1.1;
-
             margin-bottom: 20px;
 
             background:
@@ -190,156 +115,94 @@
                 );
 
             -webkit-background-clip: text;
-
-            -webkit-text-fill-color:
-                transparent;
+            -webkit-text-fill-color: transparent;
         }
-
 
         .hero h2 {
-
-            font-size: 28px;
-
-            margin-bottom: 20px;
-
+            font-size: 27px;
             color: #f8fafc;
+            margin-bottom: 20px;
         }
 
-
         .hero p {
-
-            max-width: 700px;
-
-            margin: auto;
-
             color: #94a3b8;
-
             font-size: 18px;
-
             margin-bottom: 30px;
         }
 
-
-        /* =========================
-           BUTTONS
-        ========================= */
+        /* BUTTON */
 
         .btn {
-
             display: inline-block;
 
             padding: 13px 25px;
-
             margin: 5px;
 
             border-radius: 8px;
 
             text-decoration: none;
-
             font-weight: bold;
 
             background: #38bdf8;
-
             color: #0f172a;
 
             transition: 0.3s;
         }
 
-
         .btn:hover {
-
-            transform:
-                translateY(-3px);
-
+            transform: translateY(-3px);
             background: #7dd3fc;
         }
 
-
-        .btn.secondary {
-
+        .secondary {
             background: transparent;
-
             color: #38bdf8;
-
-            border:
-                1px solid #38bdf8;
+            border: 1px solid #38bdf8;
         }
 
-
-        /* =========================
-           GENERAL SECTION
-        ========================= */
+        /* SECTIONS */
 
         section {
-
-            padding:
-                90px 8%;
+            padding: 90px 8%;
         }
 
-
-        .section-title {
-
+        .title {
             text-align: center;
-
             margin-bottom: 50px;
         }
 
-
-        .section-title h2 {
-
+        .title h2 {
             font-size: 40px;
-
             color: #f8fafc;
-
-            margin-bottom: 10px;
         }
 
-
-        .section-title p {
-
+        .title p {
             color: #64748b;
         }
 
-
-        /* =========================
-           ABOUT
-        ========================= */
+        /* ABOUT */
 
         .about {
-
             max-width: 900px;
-
             margin: auto;
 
             padding: 35px;
 
             background: #1e293b;
-
-            border:
-                1px solid #334155;
+            border: 1px solid #334155;
 
             border-radius: 15px;
         }
 
-
         .about p {
-
             color: #cbd5e1;
-
             margin-bottom: 15px;
-
-            font-size: 16px;
         }
 
-
-        /* =========================
-           SKILLS
-        ========================= */
+        /* SKILLS */
 
         .skills {
-
             max-width: 1000px;
-
             margin: auto;
 
             display: grid;
@@ -353,137 +216,63 @@
             gap: 20px;
         }
 
-
         .skill {
-
-            background: #1e293b;
-
-            border:
-                1px solid #334155;
-
             padding: 25px;
-
-            border-radius: 12px;
 
             text-align: center;
 
-            transition: 0.3s;
+            background: #1e293b;
+            border: 1px solid #334155;
+
+            border-radius: 12px;
         }
-
-
-        .skill:hover {
-
-            transform:
-                translateY(-5px);
-
-            border-color:
-                #38bdf8;
-        }
-
 
         .skill h3 {
-
             color: #38bdf8;
-
             margin-bottom: 8px;
         }
 
-
         .skill p {
-
             color: #94a3b8;
         }
 
+        /* VERSION */
 
-        /* =========================
-           CACHE SYSTEM
-        ========================= */
-
-        .cache-container {
-
-            max-width: 1100px;
-
+        .version-box {
+            max-width: 700px;
             margin: auto;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    auto-fit,
-                    minmax(220px, 1fr)
-                );
-
-            gap: 20px;
-        }
-
-
-        .cache-card {
-
-            padding: 30px;
-
-            background: #1e293b;
-
-            border:
-                1px solid #334155;
-
-            border-radius: 15px;
-
-            transition: 0.3s;
-        }
-
-
-        .cache-card:hover {
-
-            transform:
-                translateY(-5px);
-
-            border-color:
-                #38bdf8;
-        }
-
-
-        .cache-icon {
-
-            font-size: 40px;
-
-            margin-bottom: 15px;
-        }
-
-
-        .cache-card h3 {
-
-            color: #38bdf8;
-
-            margin-bottom: 10px;
-        }
-
-
-        .cache-card p {
-
-            color: #94a3b8;
-        }
-
-
-        #service-status {
 
             text-align: center;
 
-            margin-top: 30px;
+            padding: 40px;
 
-            color: #38bdf8;
+            background: #020617;
 
-            font-weight: bold;
+            border: 1px solid #334155;
+
+            border-radius: 18px;
         }
 
+        .version-box h3 {
+            color: #38bdf8;
+        }
 
-        /* =========================
-           PROJECTS
-        ========================= */
+        #version {
+            font-size: 60px;
+            font-weight: bold;
+            margin: 15px;
+
+            color: #f8fafc;
+        }
+
+        #version-info {
+            color: #94a3b8;
+        }
+
+        /* PROJECTS */
 
         .projects {
-
             max-width: 1100px;
-
             margin: auto;
 
             display: grid;
@@ -497,154 +286,89 @@
             gap: 25px;
         }
 
-
         .project {
-
             padding: 30px;
 
             background: #1e293b;
 
-            border:
-                1px solid #334155;
+            border: 1px solid #334155;
 
             border-radius: 15px;
-
-            transition: 0.3s;
         }
-
-
-        .project:hover {
-
-            transform:
-                translateY(-5px);
-
-            border-color:
-                #38bdf8;
-        }
-
 
         .project h3 {
-
             color: #f8fafc;
-
             margin-bottom: 10px;
         }
 
-
         .project p {
-
             color: #94a3b8;
-
             margin-bottom: 15px;
         }
 
-
-        .project-tag {
-
+        .tag {
             display: inline-block;
 
             padding: 5px 10px;
 
+            margin-right: 5px;
+
             border-radius: 20px;
 
-            background:
-                #0f172a;
+            background: #0f172a;
 
             color: #38bdf8;
 
             font-size: 12px;
         }
 
-
-        /* =========================
-           CONTACT
-        ========================= */
+        /* CONTACT */
 
         .contact {
-
             text-align: center;
-
-            max-width: 700px;
-
-            margin: auto;
         }
-
 
         .contact p {
-
             color: #94a3b8;
-
             margin-bottom: 10px;
-
-            font-size: 17px;
         }
 
-
-        /* =========================
-           FOOTER
-        ========================= */
+        /* FOOTER */
 
         footer {
+            padding: 30px;
 
             text-align: center;
 
-            padding: 30px;
-
-            border-top:
-                1px solid #334155;
+            border-top: 1px solid #334155;
 
             color: #64748b;
         }
 
+        /* MOBILE */
 
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 700px) {
+        @media(max-width: 700px) {
 
             nav {
-
                 flex-direction: column;
-
                 gap: 15px;
             }
 
-
             nav ul {
-
                 gap: 12px;
-
                 flex-wrap: wrap;
-
                 justify-content: center;
             }
 
-
-            nav ul li a {
-
-                font-size: 13px;
+            section {
+                padding: 60px 6%;
             }
-
 
             .hero {
-
-                min-height: 80vh;
-
-                padding:
-                    60px 6%;
+                padding: 60px 6%;
             }
-
-
-            section {
-
-                padding:
-                    65px 6%;
-            }
-
 
             .hero h2 {
-
                 font-size: 22px;
             }
 
@@ -658,26 +382,20 @@
 <body>
 
 
-    <!-- =================================
-         CONNECTION STATUS
-    ================================== -->
+    <!-- STATUS -->
 
-    <div id="connection-status">
-        Checking connection...
+    <div id="status">
+        Checking...
     </div>
 
 
-
-    <!-- =================================
-         NAVIGATION
-    ================================== -->
+    <!-- NAVBAR -->
 
     <nav>
 
         <div class="logo">
             Jaya.dev
         </div>
-
 
         <ul>
 
@@ -700,8 +418,8 @@
             </li>
 
             <li>
-                <a href="#cache">
-                    Cache
+                <a href="#version-section">
+                    Version
                 </a>
             </li>
 
@@ -722,53 +440,45 @@
     </nav>
 
 
-
-    <!-- =================================
-         HOME
-    ================================== -->
+    <!-- HOME -->
 
     <section
-        class="hero"
         id="home"
+        class="hero"
     >
 
         <div class="hero-content">
 
             <h1>
-                Hi, I'm Suhas
+                Hi, I'm Jaya
             </h1>
-
 
             <h2>
                 Developer • Creator • Learner
             </h2>
 
-
             <p>
 
                 Welcome to my portfolio.
 
-                This website demonstrates
-                an offline-first architecture
-                using Service Workers and
-                browser Cache Storage.
+                A static, offline-first
+                portfolio using Service Worker
+                caching and a tiny 0/1 control file.
 
             </p>
-
 
             <a
                 href="#projects"
                 class="btn"
             >
-                View My Work
+                My Projects
             </a>
 
-
             <a
-                href="#cache"
+                href="#version-section"
                 class="btn secondary"
             >
-                Explore Cache
+                Version System
             </a>
 
         </div>
@@ -776,21 +486,18 @@
     </section>
 
 
-
-    <!-- =================================
-         ABOUT
-    ================================== -->
+    <!-- ABOUT -->
 
     <section id="about">
 
-        <div class="section-title">
+        <div class="title">
 
             <h2>
                 About Me
             </h2>
 
             <p>
-                A little about myself
+                Get to know me
             </p>
 
         </div>
@@ -800,23 +507,21 @@
 
             <p>
                 Hello! I'm Jaya, a developer
-                interested in building creative
-                and useful web applications.
+                interested in creating useful
+                and creative web applications.
             </p>
 
-
             <p>
-                I enjoy learning new technologies,
-                developing projects and turning
-                ideas into working applications.
+                This portfolio is designed as
+                a static website and does not
+                require Node.js or a backend.
             </p>
 
-
             <p>
-                This portfolio itself is also a
-                project demonstrating how a website
-                can continue working even when the
-                internet connection is unavailable.
+                A Service Worker stores the
+                portfolio locally so that it can
+                continue working when the user
+                is offline.
             </p>
 
         </div>
@@ -824,28 +529,24 @@
     </section>
 
 
-
-    <!-- =================================
-         SKILLS
-    ================================== -->
+    <!-- SKILLS -->
 
     <section id="skills">
 
-        <div class="section-title">
+        <div class="title">
 
             <h2>
-                My Skills
+                Skills
             </h2>
 
             <p>
-                Technologies I'm learning
+                Technologies
             </p>
 
         </div>
 
 
         <div class="skills">
-
 
             <div class="skill">
 
@@ -880,7 +581,7 @@
                 </h3>
 
                 <p>
-                    Web Interactivity
+                    Web Logic
                 </p>
 
             </div>
@@ -889,11 +590,11 @@
             <div class="skill">
 
                 <h3>
-                    Node.js
+                    Service Worker
                 </h3>
 
                 <p>
-                    Backend Development
+                    Offline System
                 </p>
 
             </div>
@@ -902,11 +603,11 @@
             <div class="skill">
 
                 <h3>
-                    Git
+                    Cache API
                 </h3>
 
                 <p>
-                    Version Control
+                    Browser Cache
                 </p>
 
             </div>
@@ -919,7 +620,7 @@
                 </h3>
 
                 <p>
-                    Offline Web Apps
+                    Offline Web
                 </p>
 
             </div>
@@ -929,144 +630,56 @@
     </section>
 
 
+    <!-- VERSION CONTROL -->
 
-    <!-- =================================
-         CACHE SYSTEM
-    ================================== -->
+    <section id="version-section">
 
-    <section id="cache">
-
-        <div class="section-title">
+        <div class="title">
 
             <h2>
-                My Cache System
+                Version Control
             </h2>
 
             <p>
-                How my portfolio works offline
+                Lightweight 0 / 1 A-B system
             </p>
 
         </div>
 
 
-        <div class="cache-container">
+        <div class="version-box">
+
+            <h3>
+                ACTIVE CACHE
+            </h3>
 
 
-            <div class="cache-card">
-
-                <div class="cache-icon">
-                    🌐
-                </div>
-
-                <h3>
-                    01. Online Visit
-                </h3>
-
-                <p>
-
-                    When you first open my
-                    portfolio, the browser
-                    downloads the website.
-
-                </p>
-
+            <div id="version">
+                --
             </div>
 
 
-
-            <div class="cache-card">
-
-                <div class="cache-icon">
-                    ⚙️
-                </div>
-
-                <h3>
-                    02. Service Worker
-                </h3>
-
-                <p>
-
-                    The Service Worker is
-                    registered by the browser
-                    and starts controlling
-                    network requests.
-
-                </p>
-
-            </div>
-
-
-
-            <div class="cache-card">
-
-                <div class="cache-icon">
-                    💾
-                </div>
-
-                <h3>
-                    03. Cache Storage
-                </h3>
-
-                <p>
-
-                    Important website files
-                    are stored inside the
-                    browser's Cache Storage.
-
-                </p>
-
-            </div>
-
-
-
-            <div class="cache-card">
-
-                <div class="cache-icon">
-                    📡
-                </div>
-
-                <h3>
-                    04. Offline Mode
-                </h3>
-
-                <p>
-
-                    If the internet disappears,
-                    the Service Worker provides
-                    the cached version.
-
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-        <div id="service-status">
-
-            Checking Service Worker...
+            <p id="version-info">
+                Checking version...
+            </p>
 
         </div>
 
     </section>
 
 
-
-    <!-- =================================
-         PROJECTS
-    ================================== -->
+    <!-- PROJECTS -->
 
     <section id="projects">
 
-        <div class="section-title">
+        <div class="title">
 
             <h2>
-                My Projects
+                Projects
             </h2>
 
             <p>
-                Some things I've built
+                My work
             </p>
 
         </div>
@@ -1082,71 +695,63 @@
                 </h3>
 
                 <p>
-
-                    A portfolio website that
-                    continues working without
-                    an internet connection.
-
+                    A portfolio that can work
+                    without an internet connection
+                    after the first successful visit.
                 </p>
 
-                <span class="project-tag">
+                <span class="tag">
                     PWA
                 </span>
 
-                <span class="project-tag">
-                    JavaScript
+                <span class="tag">
+                    Offline
                 </span>
 
             </div>
 
 
-
             <div class="project">
 
                 <h3>
-                    Cache System
+                    A/B Cache
                 </h3>
 
                 <p>
-
-                    A browser caching system
-                    using Service Workers and
-                    Cache Storage.
-
+                    Uses only 0 and 1 to control
+                    which version of the portfolio
+                    is active.
                 </p>
 
-                <span class="project-tag">
-                    Service Worker
-                </span>
-
-                <span class="project-tag">
+                <span class="tag">
                     Cache API
                 </span>
 
-            </div>
+                <span class="tag">
+                    0/1
+                </span>
 
+            </div>
 
 
             <div class="project">
 
                 <h3>
-                    Web Application
+                    Static Web App
                 </h3>
 
                 <p>
-
-                    A responsive web application
-                    designed for desktop and
-                    mobile devices.
-
+                    No Node.js, database or backend.
+                    Just static HTML, JavaScript
+                    and Service Worker files.
                 </p>
 
-                <span class="project-tag">
+                <span class="tag">
                     HTML
                 </span>
 
-                <span class="project-tag">
-                    CSS
+                <span class="tag">
+                    JavaScript
                 </span>
 
             </div>
@@ -1157,17 +762,14 @@
     </section>
 
 
-
-    <!-- =================================
-         CONTACT
-    ================================== -->
+    <!-- CONTACT -->
 
     <section id="contact">
 
-        <div class="section-title">
+        <div class="title">
 
             <h2>
-                Contact Me
+                Contact
             </h2>
 
             <p>
@@ -1180,21 +782,18 @@
         <div class="contact">
 
             <p>
-                📧 Email:
-                hello@example.com
+                📧 hello@example.com
             </p>
-
 
             <p>
                 📍 India
             </p>
 
-
             <a
                 href="mailto:hello@example.com"
                 class="btn"
             >
-                Send Email
+                Contact Me
             </a>
 
         </div>
@@ -1202,10 +801,7 @@
     </section>
 
 
-
-    <!-- =================================
-         FOOTER
-    ================================== -->
+    <!-- FOOTER -->
 
     <footer>
 
@@ -1214,8 +810,7 @@
         </p>
 
         <p>
-            Built with HTML, CSS,
-            JavaScript & Service Worker
+            Static • Offline • Version Controlled
         </p>
 
     </footer>
@@ -1223,40 +818,39 @@
 
 
     <!-- =================================
-         JAVASCRIPT
-    ================================== -->
+         MAIN JAVASCRIPT
+    ================================= -->
 
     <script>
 
+        /* =========================
+           ONLINE / OFFLINE
+        ========================= */
 
-        /* ===============================
-           ONLINE / OFFLINE DETECTION
-        =============================== */
-
-        const connectionStatus =
+        const status =
             document.getElementById(
-                "connection-status"
+                "status"
             );
 
 
-        function updateConnectionStatus() {
+        function updateStatus() {
 
             if (navigator.onLine) {
 
-                connectionStatus.textContent =
+                status.textContent =
                     "🟢 ONLINE";
 
-                connectionStatus.style.background =
+                status.style.background =
                     "#16a34a";
 
             }
 
             else {
 
-                connectionStatus.textContent =
+                status.textContent =
                     "🔴 OFFLINE";
 
-                connectionStatus.style.background =
+                status.style.background =
                     "#dc2626";
 
             }
@@ -1266,98 +860,65 @@
 
         window.addEventListener(
             "online",
-            updateConnectionStatus
+            updateStatus
         );
 
 
         window.addEventListener(
             "offline",
-            updateConnectionStatus
+            updateStatus
         );
 
 
-        updateConnectionStatus();
+        updateStatus();
 
 
 
-        /* ===============================
-           SERVICE WORKER REGISTRATION
-        =============================== */
+        /* =========================
+           SERVICE WORKER
+        ========================= */
 
-        const serviceStatus =
-            document.getElementById(
-                "service-status"
-            );
-
-
-        if ("serviceWorker" in navigator) {
-
+        if (
+            "serviceWorker"
+            in navigator
+        ) {
 
             window.addEventListener(
                 "load",
-                function () {
+                async () => {
+
+                    try {
+
+                        const registration =
+                            await navigator.serviceWorker
+                            .register(
+                                "./sw.js"
+                            );
 
 
-                    navigator.serviceWorker
-                        .register("/sw.js")
-
-
-                        .then(
-                            function (registration) {
-
-
-                                console.log(
-                                    "Service Worker registered"
-                                );
-
-
-                                console.log(
-                                    "Scope:",
-                                    registration.scope
-                                );
-
-
-                                serviceStatus.textContent =
-                                    "✓ Service Worker registered — Offline cache is ready";
-
-
-                            }
-                        )
-
-
-                        .catch(
-                            function (error) {
-
-
-                                console.error(
-                                    "Service Worker registration failed:",
-                                    error
-                                );
-
-
-                                serviceStatus.textContent =
-                                    "⚠ Service Worker registration failed";
-
-
-                            }
+                        console.log(
+                            "Service Worker registered:",
+                            registration.scope
                         );
+
+
+                    }
+
+                    catch (error) {
+
+                        console.error(
+                            "Service Worker registration failed:",
+                            error
+                        );
+
+                    }
 
                 }
             );
 
         }
 
-        else {
-
-
-            serviceStatus.textContent =
-                "Service Workers are not supported.";
-
-        }
-
-
     </script>
-
 
 </body>
 
