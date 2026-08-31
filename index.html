@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color"
+          content="#0f172a">
+
+    <title>Jaya | Portfolio</title>
+
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+
+        /* =========================
+           BODY
+        ========================= */
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #0f172a;
+
+            color: #e2e8f0;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 18px 8%;
+
+            background:
+                rgba(15, 23, 42, 0.96);
+
+            border-bottom:
+                1px solid #334155;
+
+            backdrop-filter:
+                blur(10px);
+        }
+
+
+        .logo {
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            color: #38bdf8;
+        }
+
+
+        nav ul {
+
+            display: flex;
+
+            gap: 25px;
+
+            list-style: none;
+        }
+
+
+        nav ul li a {
+
+            text-decoration: none;
+
+            color: #cbd5e1;
+
+            font-size: 15px;
+
+            transition: 0.3s;
+        }
+
+
+        nav ul li a:hover {
+
+            color: #38bdf8;
+        }
+
+
+        /* =========================
+           ONLINE / OFFLINE STATUS
+        ========================= */
+
+        #connection-status {
+
+            position: fixed;
+
+            right: 20px;
+
+            bottom: 20px;
+
+            z-index: 9999;
+
+            padding: 10px 18px;
+
+            border-radius: 30px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            color: white;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,0.3);
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+
+            min-height: 90vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 70px 8%;
+        }
+
+
+        .hero-content {
+
+            max-width: 900px;
+
+            text-align: center;
+        }
+
+
+        .hero h1 {
+
+            font-size:
+                clamp(45px, 8vw, 85px);
+
+            line-height: 1.1;
+
+            margin-bottom: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #38bdf8,
+                    #818cf8,
+                    #c084fc
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color:
+                transparent;
+        }
+
+
+        .hero h2 {
+
+            font-size: 28px;
+
+            margin-bottom: 20px;
+
+            color: #f8fafc;
+        }
+
+
+        .hero p {
+
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #94a3b8;
+
+            font-size: 18px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .btn {
+
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            margin: 5px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            background: #38bdf8;
+
+            color: #0f172a;
+
+            transition: 0.3s;
+        }
+
+
+        .btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            background: #7dd3fc;
+        }
+
+
+        .btn.secondary {
+
+            background: transparent;
+
+            color: #38bdf8;
+
+            border:
+                1px solid #38bdf8;
+        }
+
+
+        /* =========================
+           GENERAL SECTION
+        ========================= */
+
+        section {
+
+            padding:
+                90px 8%;
+        }
+
+
+        .section-title {
+
+            text-align: center;
+
+            margin-bottom: 50px;
+        }
+
+
+        .section-title h2 {
+
+            font-size: 40px;
+
+            color: #f8fafc;
+
+            margin-bottom: 10px;
+        }
+
+
+        .section-title p {
+
+            color: #64748b;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+
+            max-width: 900px;
+
+            margin: auto;
+
+            padding: 35px;
+
+            background: #1e293b;
+
+            border:
+                1px solid #334155;
+
+            border-radius: 15px;
+        }
+
+
+        .about p {
+
+            color: #cbd5e1;
+
+            margin-bottom: 15px;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(180px, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+
+        .skill {
+
+            background: #1e293b;
+
+            border:
+                1px solid #334155;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+
+        .skill:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #38bdf8;
+        }
+
+
+        .skill h3 {
+
+            color: #38bdf8;
+
+            margin-bottom: 8px;
+        }
+
+
+        .skill p {
+
+            color: #94a3b8;
+        }
+
+
+        /* =========================
+           CACHE SYSTEM
+        ========================= */
+
+        .cache-container {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(220px, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+
+        .cache-card {
+
+            padding: 30px;
+
+            background: #1e293b;
+
+            border:
+                1px solid #334155;
+
+            border-radius: 15px;
+
+            transition: 0.3s;
+        }
+
+
+        .cache-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #38bdf8;
+        }
+
+
+        .cache-icon {
+
+            font-size: 40px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .cache-card h3 {
+
+            color: #38bdf8;
+
+            margin-bottom: 10px;
+        }
+
+
+        .cache-card p {
+
+            color: #94a3b8;
+        }
+
+
+        #service-status {
+
+            text-align: center;
+
+            margin-top: 30px;
+
+            color: #38bdf8;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(250px, 1fr)
+                );
+
+            gap: 25px;
+        }
+
+
+        .project {
+
+            padding: 30px;
+
+            background: #1e293b;
+
+            border:
+                1px solid #334155;
+
+            border-radius: 15px;
+
+            transition: 0.3s;
+        }
+
+
+        .project:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #38bdf8;
+        }
+
+
+        .project h3 {
+
+            color: #f8fafc;
+
+            margin-bottom: 10px;
+        }
+
+
+        .project p {
+
+            color: #94a3b8;
+
+            margin-bottom: 15px;
+        }
+
+
+        .project-tag {
+
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            background:
+                #0f172a;
+
+            color: #38bdf8;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+
+            text-align: center;
+
+            max-width: 700px;
+
+            margin: auto;
+        }
+
+
+        .contact p {
+
+            color: #94a3b8;
+
+            margin-bottom: 10px;
+
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 30px;
+
+            border-top:
+                1px solid #334155;
+
+            color: #64748b;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            nav ul {
+
+                gap: 12px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+
+            nav ul li a {
+
+                font-size: 13px;
+            }
+
+
+            .hero {
+
+                min-height: 80vh;
+
+                padding:
+                    60px 6%;
+            }
+
+
+            section {
+
+                padding:
+                    65px 6%;
+            }
+
+
+            .hero h2 {
+
+                font-size: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         CONNECTION STATUS
+    ================================== -->
+
+    <div id="connection-status">
+        Checking connection...
+    </div>
+
+
+
+    <!-- =================================
+         NAVIGATION
+    ================================== -->
+
+    <nav>
+
+        <div class="logo">
+            Jaya.dev
+        </div>
+
+
+        <ul>
+
+            <li>
+                <a href="#home">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="#about">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="#skills">
+                    Skills
+                </a>
+            </li>
+
+            <li>
+                <a href="#cache">
+                    Cache
+                </a>
+            </li>
+
+            <li>
+                <a href="#projects">
+                    Projects
+                </a>
+            </li>
+
+            <li>
+                <a href="#contact">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- =================================
+         HOME
+    ================================== -->
+
+    <section
+        class="hero"
+        id="home"
+    >
+
+        <div class="hero-content">
+
+            <h1>
+                Hi, I'm Jaya
+            </h1>
+
+
+            <h2>
+                Developer • Creator • Learner
+            </h2>
+
+
+            <p>
+
+                Welcome to my portfolio.
+
+                This website demonstrates
+                an offline-first architecture
+                using Service Workers and
+                browser Cache Storage.
+
+            </p>
+
+
+            <a
+                href="#projects"
+                class="btn"
+            >
+                View My Work
+            </a>
+
+
+            <a
+                href="#cache"
+                class="btn secondary"
+            >
+                Explore Cache
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         ABOUT
+    ================================== -->
+
+    <section id="about">
+
+        <div class="section-title">
+
+            <h2>
+                About Me
+            </h2>
+
+            <p>
+                A little about myself
+            </p>
+
+        </div>
+
+
+        <div class="about">
+
+            <p>
+                Hello! I'm Jaya, a developer
+                interested in building creative
+                and useful web applications.
+            </p>
+
+
+            <p>
+                I enjoy learning new technologies,
+                developing projects and turning
+                ideas into working applications.
+            </p>
+
+
+            <p>
+                This portfolio itself is also a
+                project demonstrating how a website
+                can continue working even when the
+                internet connection is unavailable.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         SKILLS
+    ================================== -->
+
+    <section id="skills">
+
+        <div class="section-title">
+
+            <h2>
+                My Skills
+            </h2>
+
+            <p>
+                Technologies I'm learning
+            </p>
+
+        </div>
+
+
+        <div class="skills">
+
+
+            <div class="skill">
+
+                <h3>
+                    HTML
+                </h3>
+
+                <p>
+                    Web Structure
+                </p>
+
+            </div>
+
+
+            <div class="skill">
+
+                <h3>
+                    CSS
+                </h3>
+
+                <p>
+                    Web Design
+                </p>
+
+            </div>
+
+
+            <div class="skill">
+
+                <h3>
+                    JavaScript
+                </h3>
+
+                <p>
+                    Web Interactivity
+                </p>
+
+            </div>
+
+
+            <div class="skill">
+
+                <h3>
+                    Node.js
+                </h3>
+
+                <p>
+                    Backend Development
+                </p>
+
+            </div>
+
+
+            <div class="skill">
+
+                <h3>
+                    Git
+                </h3>
+
+                <p>
+                    Version Control
+                </p>
+
+            </div>
+
+
+            <div class="skill">
+
+                <h3>
+                    PWA
+                </h3>
+
+                <p>
+                    Offline Web Apps
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         CACHE SYSTEM
+    ================================== -->
+
+    <section id="cache">
+
+        <div class="section-title">
+
+            <h2>
+                My Cache System
+            </h2>
+
+            <p>
+                How my portfolio works offline
+            </p>
+
+        </div>
+
+
+        <div class="cache-container">
+
+
+            <div class="cache-card">
+
+                <div class="cache-icon">
+                    🌐
+                </div>
+
+                <h3>
+                    01. Online Visit
+                </h3>
+
+                <p>
+
+                    When you first open my
+                    portfolio, the browser
+                    downloads the website.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="cache-card">
+
+                <div class="cache-icon">
+                    ⚙️
+                </div>
+
+                <h3>
+                    02. Service Worker
+                </h3>
+
+                <p>
+
+                    The Service Worker is
+                    registered by the browser
+                    and starts controlling
+                    network requests.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="cache-card">
+
+                <div class="cache-icon">
+                    💾
+                </div>
+
+                <h3>
+                    03. Cache Storage
+                </h3>
+
+                <p>
+
+                    Important website files
+                    are stored inside the
+                    browser's Cache Storage.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="cache-card">
+
+                <div class="cache-icon">
+                    📡
+                </div>
+
+                <h3>
+                    04. Offline Mode
+                </h3>
+
+                <p>
+
+                    If the internet disappears,
+                    the Service Worker provides
+                    the cached version.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div id="service-status">
+
+            Checking Service Worker...
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         PROJECTS
+    ================================== -->
+
+    <section id="projects">
+
+        <div class="section-title">
+
+            <h2>
+                My Projects
+            </h2>
+
+            <p>
+                Some things I've built
+            </p>
+
+        </div>
+
+
+        <div class="projects">
+
+
+            <div class="project">
+
+                <h3>
+                    Offline Portfolio
+                </h3>
+
+                <p>
+
+                    A portfolio website that
+                    continues working without
+                    an internet connection.
+
+                </p>
+
+                <span class="project-tag">
+                    PWA
+                </span>
+
+                <span class="project-tag">
+                    JavaScript
+                </span>
+
+            </div>
+
+
+
+            <div class="project">
+
+                <h3>
+                    Cache System
+                </h3>
+
+                <p>
+
+                    A browser caching system
+                    using Service Workers and
+                    Cache Storage.
+
+                </p>
+
+                <span class="project-tag">
+                    Service Worker
+                </span>
+
+                <span class="project-tag">
+                    Cache API
+                </span>
+
+            </div>
+
+
+
+            <div class="project">
+
+                <h3>
+                    Web Application
+                </h3>
+
+                <p>
+
+                    A responsive web application
+                    designed for desktop and
+                    mobile devices.
+
+                </p>
+
+                <span class="project-tag">
+                    HTML
+                </span>
+
+                <span class="project-tag">
+                    CSS
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         CONTACT
+    ================================== -->
+
+    <section id="contact">
+
+        <div class="section-title">
+
+            <h2>
+                Contact Me
+            </h2>
+
+            <p>
+                Let's connect
+            </p>
+
+        </div>
+
+
+        <div class="contact">
+
+            <p>
+                📧 Email:
+                hello@example.com
+            </p>
+
+
+            <p>
+                📍 India
+            </p>
+
+
+            <a
+                href="mailto:hello@example.com"
+                class="btn"
+            >
+                Send Email
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Jaya.dev
+        </p>
+
+        <p>
+            Built with HTML, CSS,
+            JavaScript & Service Worker
+        </p>
+
+    </footer>
+
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+    <script>
+
+
+        /* ===============================
+           ONLINE / OFFLINE DETECTION
+        =============================== */
+
+        const connectionStatus =
+            document.getElementById(
+                "connection-status"
+            );
+
+
+        function updateConnectionStatus() {
+
+            if (navigator.onLine) {
+
+                connectionStatus.textContent =
+                    "🟢 ONLINE";
+
+                connectionStatus.style.background =
+                    "#16a34a";
+
+            }
+
+            else {
+
+                connectionStatus.textContent =
+                    "🔴 OFFLINE";
+
+                connectionStatus.style.background =
+                    "#dc2626";
+
+            }
+
+        }
+
+
+        window.addEventListener(
+            "online",
+            updateConnectionStatus
+        );
+
+
+        window.addEventListener(
+            "offline",
+            updateConnectionStatus
+        );
+
+
+        updateConnectionStatus();
+
+
+
+        /* ===============================
+           SERVICE WORKER REGISTRATION
+        =============================== */
+
+        const serviceStatus =
+            document.getElementById(
+                "service-status"
+            );
+
+
+        if ("serviceWorker" in navigator) {
+
+
+            window.addEventListener(
+                "load",
+                function () {
+
+
+                    navigator.serviceWorker
+                        .register("/sw.js")
+
+
+                        .then(
+                            function (registration) {
+
+
+                                console.log(
+                                    "Service Worker registered"
+                                );
+
+
+                                console.log(
+                                    "Scope:",
+                                    registration.scope
+                                );
+
+
+                                serviceStatus.textContent =
+                                    "✓ Service Worker registered — Offline cache is ready";
+
+
+                            }
+                        )
+
+
+                        .catch(
+                            function (error) {
+
+
+                                console.error(
+                                    "Service Worker registration failed:",
+                                    error
+                                );
+
+
+                                serviceStatus.textContent =
+                                    "⚠ Service Worker registration failed";
+
+
+                            }
+                        );
+
+                }
+            );
+
+        }
+
+        else {
+
+
+            serviceStatus.textContent =
+                "Service Workers are not supported.";
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
