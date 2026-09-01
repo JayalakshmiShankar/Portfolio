@@ -29,8 +29,6 @@
             line-height: 1.6;
         }
 
-        /* NAVBAR */
-
         nav {
             position: sticky;
             top: 0;
@@ -67,12 +65,13 @@
             color: #38bdf8;
         }
 
-        /* STATUS */
-
         #status {
+
             position: fixed;
+
             right: 20px;
             bottom: 20px;
+
             z-index: 9999;
 
             padding: 10px 18px;
@@ -80,30 +79,39 @@
             border-radius: 30px;
 
             color: white;
+
             font-size: 14px;
+
             font-weight: bold;
         }
 
-        /* HERO */
-
         .hero {
+
             min-height: 90vh;
 
             display: flex;
+
             justify-content: center;
+
             align-items: center;
 
             padding: 70px 8%;
         }
 
         .hero-content {
-            max-width: 850px;
+
+            max-width: 900px;
+
             text-align: center;
         }
 
         .hero h1 {
-            font-size: clamp(45px, 8vw, 85px);
+
+            font-size:
+                clamp(45px, 8vw, 85px);
+
             line-height: 1.1;
+
             margin-bottom: 20px;
 
             background:
@@ -115,94 +123,112 @@
                 );
 
             -webkit-background-clip: text;
+
             -webkit-text-fill-color: transparent;
         }
 
         .hero h2 {
+
             font-size: 27px;
+
             color: #f8fafc;
+
             margin-bottom: 20px;
         }
 
         .hero p {
-            color: #94a3b8;
-            font-size: 18px;
+
+            max-width: 700px;
+
+            margin: auto;
+
             margin-bottom: 30px;
+
+            color: #94a3b8;
+
+            font-size: 18px;
         }
 
-        /* BUTTON */
-
         .btn {
+
             display: inline-block;
 
             padding: 13px 25px;
+
             margin: 5px;
 
             border-radius: 8px;
 
             text-decoration: none;
+
             font-weight: bold;
 
             background: #38bdf8;
+
             color: #0f172a;
-
-            transition: 0.3s;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            background: #7dd3fc;
-        }
+        .btn.secondary {
 
-        .secondary {
             background: transparent;
+
             color: #38bdf8;
+
             border: 1px solid #38bdf8;
         }
 
-        /* SECTIONS */
-
         section {
+
             padding: 90px 8%;
         }
 
         .title {
+
             text-align: center;
+
             margin-bottom: 50px;
         }
 
         .title h2 {
+
             font-size: 40px;
+
             color: #f8fafc;
+
+            margin-bottom: 10px;
         }
 
         .title p {
+
             color: #64748b;
         }
 
-        /* ABOUT */
-
         .about {
+
             max-width: 900px;
+
             margin: auto;
 
             padding: 35px;
 
             background: #1e293b;
+
             border: 1px solid #334155;
 
             border-radius: 15px;
         }
 
         .about p {
+
             color: #cbd5e1;
+
             margin-bottom: 15px;
         }
 
-        /* SKILLS */
-
         .skills {
+
             max-width: 1000px;
+
             margin: auto;
 
             display: grid;
@@ -217,34 +243,39 @@
         }
 
         .skill {
+
             padding: 25px;
 
             text-align: center;
 
             background: #1e293b;
+
             border: 1px solid #334155;
 
             border-radius: 12px;
         }
 
         .skill h3 {
+
             color: #38bdf8;
+
             margin-bottom: 8px;
         }
 
         .skill p {
+
             color: #94a3b8;
         }
 
-        /* VERSION */
-
         .version-box {
+
             max-width: 700px;
+
             margin: auto;
 
-            text-align: center;
-
             padding: 40px;
+
+            text-align: center;
 
             background: #020617;
 
@@ -254,25 +285,30 @@
         }
 
         .version-box h3 {
+
             color: #38bdf8;
         }
 
-        #version {
+        #version-number {
+
             font-size: 60px;
+
             font-weight: bold;
-            margin: 15px;
 
             color: #f8fafc;
+
+            margin: 15px;
         }
 
         #version-info {
+
             color: #94a3b8;
         }
 
-        /* PROJECTS */
-
         .projects {
+
             max-width: 1100px;
+
             margin: auto;
 
             display: grid;
@@ -287,6 +323,7 @@
         }
 
         .project {
+
             padding: 30px;
 
             background: #1e293b;
@@ -297,16 +334,21 @@
         }
 
         .project h3 {
+
             color: #f8fafc;
+
             margin-bottom: 10px;
         }
 
         .project p {
+
             color: #94a3b8;
+
             margin-bottom: 15px;
         }
 
         .tag {
+
             display: inline-block;
 
             padding: 5px 10px;
@@ -322,20 +364,24 @@
             font-size: 12px;
         }
 
-        /* CONTACT */
-
         .contact {
+
+            max-width: 700px;
+
+            margin: auto;
+
             text-align: center;
         }
 
         .contact p {
+
             color: #94a3b8;
+
             margin-bottom: 10px;
         }
 
-        /* FOOTER */
-
         footer {
+
             padding: 30px;
 
             text-align: center;
@@ -345,31 +391,27 @@
             color: #64748b;
         }
 
-        /* MOBILE */
-
         @media(max-width: 700px) {
 
             nav {
+
                 flex-direction: column;
+
                 gap: 15px;
             }
 
             nav ul {
+
                 gap: 12px;
+
                 flex-wrap: wrap;
+
                 justify-content: center;
             }
 
             section {
-                padding: 60px 6%;
-            }
 
-            .hero {
                 padding: 60px 6%;
-            }
-
-            .hero h2 {
-                font-size: 22px;
             }
 
         }
@@ -382,14 +424,19 @@
 <body>
 
 
-    <!-- STATUS -->
+    <!-- ============================
+         CONNECTION STATUS
+    ============================= -->
 
     <div id="status">
         Checking...
     </div>
 
 
-    <!-- NAVBAR -->
+
+    <!-- ============================
+         NAVBAR
+    ============================= -->
 
     <nav>
 
@@ -418,7 +465,7 @@
             </li>
 
             <li>
-                <a href="#version-section">
+                <a href="#version">
                     Version
                 </a>
             </li>
@@ -440,7 +487,10 @@
     </nav>
 
 
-    <!-- HOME -->
+
+    <!-- ============================
+         HOME
+    ============================= -->
 
     <section
         id="home"
@@ -461,9 +511,9 @@
 
                 Welcome to my portfolio.
 
-                A static, offline-first
-                portfolio using Service Worker
-                caching and a tiny 0/1 control file.
+                This website uses a
+                0 / 1 version-controlled
+                offline cache system.
 
             </p>
 
@@ -475,7 +525,7 @@
             </a>
 
             <a
-                href="#version-section"
+                href="#version"
                 class="btn secondary"
             >
                 Version System
@@ -486,7 +536,10 @@
     </section>
 
 
-    <!-- ABOUT -->
+
+    <!-- ============================
+         ABOUT
+    ============================= -->
 
     <section id="about">
 
@@ -512,16 +565,16 @@
             </p>
 
             <p>
-                This portfolio is designed as
-                a static website and does not
-                require Node.js or a backend.
+                This portfolio is designed
+                to work offline after its
+                first successful online visit.
             </p>
 
             <p>
-                A Service Worker stores the
-                portfolio locally so that it can
-                continue working when the user
-                is offline.
+                The website uses a tiny
+                control.v file containing
+                only 0 or 1 to identify the
+                active version.
             </p>
 
         </div>
@@ -529,7 +582,10 @@
     </section>
 
 
-    <!-- SKILLS -->
+
+    <!-- ============================
+         SKILLS
+    ============================= -->
 
     <section id="skills">
 
@@ -616,11 +672,11 @@
             <div class="skill">
 
                 <h3>
-                    PWA
+                    Version Control
                 </h3>
 
                 <p>
-                    Offline Web
+                    A / B
                 </p>
 
             </div>
@@ -630,9 +686,12 @@
     </section>
 
 
-    <!-- VERSION CONTROL -->
 
-    <section id="version-section">
+    <!-- ============================
+         VERSION
+    ============================= -->
+
+    <section id="version">
 
         <div class="title">
 
@@ -641,7 +700,7 @@
             </h2>
 
             <p>
-                Lightweight 0 / 1 A-B system
+                Current cached version
             </p>
 
         </div>
@@ -650,17 +709,17 @@
         <div class="version-box">
 
             <h3>
-                ACTIVE CACHE
+                ACTIVE VERSION
             </h3>
 
 
-            <div id="version">
+            <div id="version-number">
                 --
             </div>
 
 
             <p id="version-info">
-                Checking version...
+                Loading...
             </p>
 
         </div>
@@ -668,7 +727,10 @@
     </section>
 
 
-    <!-- PROJECTS -->
+
+    <!-- ============================
+         PROJECTS
+    ============================= -->
 
     <section id="projects">
 
@@ -695,9 +757,9 @@
                 </h3>
 
                 <p>
-                    A portfolio that can work
-                    without an internet connection
-                    after the first successful visit.
+                    A portfolio that continues
+                    working without an internet
+                    connection.
                 </p>
 
                 <span class="tag">
@@ -714,17 +776,16 @@
             <div class="project">
 
                 <h3>
-                    A/B Cache
+                    A/B Version System
                 </h3>
 
                 <p>
-                    Uses only 0 and 1 to control
-                    which version of the portfolio
-                    is active.
+                    Two cache slots controlled
+                    by a single 0 or 1 character.
                 </p>
 
                 <span class="tag">
-                    Cache API
+                    Cache
                 </span>
 
                 <span class="tag">
@@ -737,13 +798,12 @@
             <div class="project">
 
                 <h3>
-                    Static Web App
+                    Static Website
                 </h3>
 
                 <p>
-                    No Node.js, database or backend.
-                    Just static HTML, JavaScript
-                    and Service Worker files.
+                    No Node.js or backend is
+                    required.
                 </p>
 
                 <span class="tag">
@@ -762,7 +822,10 @@
     </section>
 
 
-    <!-- CONTACT -->
+
+    <!-- ============================
+         CONTACT
+    ============================= -->
 
     <section id="contact">
 
@@ -801,7 +864,10 @@
     </section>
 
 
-    <!-- FOOTER -->
+
+    <!-- ============================
+         FOOTER
+    ============================= -->
 
     <footer>
 
@@ -810,22 +876,18 @@
         </p>
 
         <p>
-            Static • Offline • Version Controlled
+            Offline • A/B Version Controlled
         </p>
 
     </footer>
 
 
 
-    <!-- =================================
-         MAIN JAVASCRIPT
-    ================================= -->
+    <!-- ============================
+         PAGE JAVASCRIPT
+    ============================= -->
 
     <script>
-
-        /* =========================
-           ONLINE / OFFLINE
-        ========================= */
 
         const status =
             document.getElementById(
@@ -833,7 +895,23 @@
             );
 
 
-        function updateStatus() {
+        const versionNumber =
+            document.getElementById(
+                "version-number"
+            );
+
+
+        const versionInfo =
+            document.getElementById(
+                "version-info"
+            );
+
+
+        /*
+         * CONNECTION DISPLAY
+         */
+
+        function updateConnectionUI() {
 
             if (navigator.onLine) {
 
@@ -843,9 +921,7 @@
                 status.style.background =
                     "#16a34a";
 
-            }
-
-            else {
+            } else {
 
                 status.textContent =
                     "🔴 OFFLINE";
@@ -858,30 +934,88 @@
         }
 
 
+        updateConnectionUI();
+
+
         window.addEventListener(
             "online",
-            updateStatus
+            updateConnectionUI
         );
 
 
         window.addEventListener(
             "offline",
-            updateStatus
+            updateConnectionUI
         );
 
 
-        updateStatus();
+
+        /*
+         * READ THE VERSION FROM
+         * SERVICE WORKER
+         */
+
+        async function showVersion() {
+
+            if (
+                !navigator.serviceWorker.controller
+            ) {
+
+                return;
+
+            }
+
+
+            const messageChannel =
+                new MessageChannel();
+
+
+            messageChannel.port1.onmessage =
+                function(event) {
+
+                    if (
+                        event.data &&
+                        event.data.version
+                    ) {
+
+                        versionNumber.textContent =
+                            "V" +
+                            event.data.version;
+
+
+                        versionInfo.textContent =
+                            "Portfolio is using cached version " +
+                            event.data.version;
+
+                    }
+
+                };
+
+
+            navigator.serviceWorker.controller
+                .postMessage(
+                    {
+                        type:
+                            "GET_VERSION"
+                    },
+                    [
+                        messageChannel.port2
+                    ]
+                );
+
+        }
 
 
 
-        /* =========================
-           SERVICE WORKER
-        ========================= */
+        /*
+         * SERVICE WORKER
+         */
 
         if (
             "serviceWorker"
             in navigator
         ) {
+
 
             window.addEventListener(
                 "load",
@@ -889,25 +1023,42 @@
 
                     try {
 
-                        const registration =
-                            await navigator.serviceWorker
+                        await navigator.serviceWorker
                             .register(
                                 "./sw.js"
                             );
 
 
-                        console.log(
-                            "Service Worker registered:",
-                            registration.scope
-                        );
+                        /*
+                         * Wait for controller.
+                         */
 
+                        if (
+                            !navigator.serviceWorker.controller
+                        ) {
+
+                            navigator.serviceWorker
+                                .addEventListener(
+                                    "controllerchange",
+                                    () => {
+
+                                        showVersion();
+
+                                    }
+                                );
+
+                        } else {
+
+                            showVersion();
+
+                        }
 
                     }
 
                     catch (error) {
 
                         console.error(
-                            "Service Worker registration failed:",
+                            "Service Worker error:",
                             error
                         );
 

@@ -1,23 +1,46 @@
-const CONTROL_FILE = "./control.v";
+/*
+=================================================
+ JAYA PORTFOLIO
+ EXACT 0 / 1 ONLINE + OFFLINE VERSION CONTROL
+=================================================
+*/
 
-const CACHE_PREFIX = "portfolio-v";
 
-const META_CACHE = "portfolio-meta";
+const CONTROL_FILE =
+    "./control.v";
 
 
-/* =========================================
-   READ 0 / 1
-========================================= */
+const CACHE_PREFIX =
+    "portfolio-v";
 
-async function readControl() {
+
+const META_CACHE =
+    "portfolio-meta";
+
+
+/*
+=================================================
+ READ ONLINE CONTROL
+
+ Returns:
+ "0"
+ "1"
+ null = cannot reach network
+=================================================
+*/
+
+async function readOnlineControl() {
 
     try {
 
         const response =
             await fetch(
-                CONTROL_FILE,
+                CONTROL_FILE +
+                "?t=" +
+                Date.now(),
                 {
-                    cache: "no-store"
+                    cache:
+                        "no-store"
                 }
             );
 
@@ -30,8 +53,14 @@ async function readControl() {
 
 
         const value =
-            (await response.text()).trim();
+            (
+                await response.text()
+            ).trim();
 
+
+        /*
+         * ONLY ACCEPT 0 OR 1
+         */
 
         if (
             value === "0" ||
@@ -49,6 +78,10 @@ async function readControl() {
 
     catch (error) {
 
+        /*
+         * No internet / network failed
+         */
+
         return null;
 
     }
@@ -57,11 +90,13 @@ async function readControl() {
 
 
 
-/* =========================================
-   READ LAST VERSION
-========================================= */
+/*
+=================================================
+ GET LAST SUCCESSFULLY CACHED VERSION
+=================================================
+*/
 
-async function getLastVersion() {
+async function getStoredVersion() {
 
     const cache =
         await caches.open(
@@ -71,7 +106,7 @@ async function getLastVersion() {
 
     const response =
         await cache.match(
-            "./version"
+            "./active-version"
         );
 
 
@@ -83,7 +118,9 @@ async function getLastVersion() {
 
 
     const value =
-        await response.text();
+        (
+            await response.text()
+        ).trim();
 
 
     if (
@@ -102,11 +139,13 @@ async function getLastVersion() {
 
 
 
-/* =========================================
-   SAVE LAST VERSION
-========================================= */
+/*
+=================================================
+ SAVE ACTIVE VERSION
+=================================================
+*/
 
-async function saveVersion(
+async function saveStoredVersion(
     version
 ) {
 
@@ -118,7 +157,7 @@ async function saveVersion(
 
     await cache.put(
 
-        "./version",
+        "./active-version",
 
         new Response(
             version
@@ -130,17 +169,21 @@ async function saveVersion(
 
 
 
-/* =========================================
-   DOWNLOAD AND CACHE PORTFOLIO
-========================================= */
+/*
+=================================================
+ DOWNLOAD NEW VERSION
+=================================================
+*/
 
-async function updateCache(
+async function downloadVersion(
     version,
     request
 ) {
 
+
     const cacheName =
-        CACHE_PREFIX + version;
+        CACHE_PREFIX +
+        version;
 
 
     const cache =
@@ -149,11 +192,17 @@ async function updateCache(
         );
 
 
+    /*
+     * ALWAYS GET THE NEW PAGE
+     * FROM THE NETWORK.
+     */
+
     const response =
         await fetch(
             request,
             {
-                cache: "no-store"
+                cache:
+                    "no-store"
             }
         );
 
@@ -161,15 +210,25 @@ async function updateCache(
     if (!response.ok) {
 
         throw new Error(
-            "Could not download portfolio"
+            "Could not download new version"
         );
 
     }
 
 
     /*
-       Save the complete HTML page.
-    */
+     * Store index.html
+     */
+
+    await cache.put(
+        "./index.html",
+        response.clone()
+    );
+
+
+    /*
+     * Store navigation URL
+     */
 
     await cache.put(
         request,
@@ -178,32 +237,12 @@ async function updateCache(
 
 
     /*
-       Also store ./index.html.
-    */
+     * Save active version ONLY
+     * AFTER successful download.
+     */
 
-    await cache.put(
-        "./index.html",
-        response.clone()
-    );
-
-
-    await saveVersion(
+    await saveStoredVersion(
         version
-    );
-
-
-    /*
-       Remove the other slot.
-    */
-
-    const oldVersion =
-        version === "0"
-            ? "1"
-            : "0";
-
-
-    await caches.delete(
-        CACHE_PREFIX + oldVersion
     );
 
 
@@ -213,9 +252,38 @@ async function updateCache(
 
 
 
-/* =========================================
-   INSTALL
-========================================= */
+/*
+=================================================
+ DELETE THE OTHER SLOT
+=================================================
+*/
+
+async function removeOldSlot(
+    activeVersion
+) {
+
+    const oldVersion =
+        activeVersion === "0"
+            ? "1"
+            : "0";
+
+
+    await caches.delete(
+
+        CACHE_PREFIX +
+        oldVersion
+
+    );
+
+}
+
+
+
+/*
+=================================================
+ INSTALL
+=================================================
+*/
 
 self.addEventListener(
     "install",
@@ -225,6 +293,7 @@ self.addEventListener(
             "Service Worker installed"
         );
 
+
         self.skipWaiting();
 
     }
@@ -232,16 +301,20 @@ self.addEventListener(
 
 
 
-/* =========================================
-   ACTIVATE
-========================================= */
+/*
+=================================================
+ ACTIVATE
+=================================================
+*/
 
 self.addEventListener(
     "activate",
     event => {
 
         event.waitUntil(
+
             self.clients.claim()
+
         );
 
     }
@@ -249,9 +322,11 @@ self.addEventListener(
 
 
 
-/* =========================================
-   FETCH
-========================================= */
+/*
+=================================================
+ FETCH
+=================================================
+*/
 
 self.addEventListener(
     "fetch",
@@ -259,8 +334,8 @@ self.addEventListener(
 
 
         /*
-           Only handle page navigation.
-        */
+         * ONLY CONTROL PAGE NAVIGATION.
+         */
 
         if (
             event.request.mode !==
@@ -274,7 +349,7 @@ self.addEventListener(
 
         event.respondWith(
 
-            handleRequest(
+            handlePage(
                 event.request
             )
 
@@ -285,83 +360,159 @@ self.addEventListener(
 
 
 
-/* =========================================
-   HANDLE PAGE
-========================================= */
+/*
+=================================================
+ PAGE HANDLER
+=================================================
+*/
 
-async function handleRequest(
+async function handlePage(
     request
 ) {
 
 
     /*
-       Try reading the online
-       control file.
+    =================================================
+       STEP 1
+
+       TRY NETWORK CONTROL FILE.
+
+       If it succeeds → ONLINE.
+       If it fails → OFFLINE.
+    =================================================
     */
 
+
     const onlineVersion =
-        await readControl();
+        await readOnlineControl();
 
 
-    /* =====================================
+
+    /*
+    =================================================
        ONLINE
-    ===================================== */
+    =================================================
+    */
 
     if (
         onlineVersion !== null
     ) {
 
 
-        const savedVersion =
-            await getLastVersion();
+        console.log(
+            "ONLINE"
+        );
+
+
+        console.log(
+            "Server version:",
+            onlineVersion
+        );
+
+
+        const storedVersion =
+            await getStoredVersion();
+
+
+        console.log(
+            "Cached version:",
+            storedVersion
+        );
+
 
 
         /*
-           New version
+        =============================================
+           NEW VERSION
+        =============================================
         */
 
         if (
-            savedVersion !==
+            storedVersion !==
             onlineVersion
         ) {
 
 
             console.log(
-                "Version changed:",
-                savedVersion,
-                "→",
+                "VERSION CHANGED"
+            );
+
+
+            console.log(
+                "Updating to:",
                 onlineVersion
             );
 
 
             try {
 
-                return await updateCache(
-                    onlineVersion,
-                    request
+
+                /*
+                 * Download new version.
+                 */
+
+                const response =
+                    await downloadVersion(
+                        onlineVersion,
+                        request
+                    );
+
+
+                /*
+                 * Delete old version.
+                 */
+
+                await removeOldSlot(
+                    onlineVersion
                 );
+
+
+                /*
+                 * IMPORTANT:
+
+                 * Return the NEW response
+                 * immediately.
+
+                 * The user sees the new
+                 * portfolio now.
+                 */
+
+                return response;
 
             }
 
             catch (error) {
 
+
                 console.log(
-                    "Update failed."
+                    "Update failed:",
+                    error
                 );
+
+
+                /*
+                 * If update failed,
+                 * safely use old cache.
+                 */
 
             }
 
         }
 
 
+
         /*
-           Same version
+        =============================================
+           SAME VERSION
+        =============================================
         */
 
         const cache =
             await caches.open(
+
                 CACHE_PREFIX +
                 onlineVersion
+
             );
 
 
@@ -392,12 +543,12 @@ async function handleRequest(
 
 
         /*
-           Cache does not exist yet.
-        */
+         * First visit / cache missing.
+         */
 
         try {
 
-            return await updateCache(
+            return await downloadVersion(
                 onlineVersion,
                 request
             );
@@ -407,7 +558,7 @@ async function handleRequest(
         catch (error) {
 
             console.log(
-                "Could not create cache"
+                "Initial download failed"
             );
 
         }
@@ -416,29 +567,45 @@ async function handleRequest(
 
 
 
-    /* =====================================
+    /*
+    =================================================
        OFFLINE
-    ===================================== */
+    =================================================
 
-    const savedVersion =
-        await getLastVersion();
+       IMPORTANT:
+
+       We do NOT read control.v here.
+
+       We do NOT check for updates.
+
+       We do NOT display update messages.
+
+       We simply use the last successfully
+       cached version.
+    =================================================
+    */
+
+
+    console.log(
+        "OFFLINE - CACHE ONLY"
+    );
+
+
+    const storedVersion =
+        await getStoredVersion();
 
 
     if (
-        savedVersion !== null
+        storedVersion !== null
     ) {
-
-
-        console.log(
-            "Offline — using version:",
-            savedVersion
-        );
 
 
         const cache =
             await caches.open(
+
                 CACHE_PREFIX +
-                savedVersion
+                storedVersion
+
             );
 
 
@@ -471,19 +638,26 @@ async function handleRequest(
 
 
 
-    /* =====================================
-       SEARCH BOTH CACHE SLOTS
-    ===================================== */
+    /*
+    =================================================
+       LAST RESORT
+
+       Check either A/B cache.
+    =================================================
+    */
 
     for (
-        const version of ["0", "1"]
+        const version
+        of ["0", "1"]
     ) {
 
 
         const cache =
             await caches.open(
+
                 CACHE_PREFIX +
                 version
+
             );
 
 
@@ -503,9 +677,11 @@ async function handleRequest(
 
 
 
-    /* =====================================
-       NO CACHE
-    ===================================== */
+    /*
+    =================================================
+       NOTHING CACHED
+    =================================================
+    */
 
     return new Response(
 
@@ -519,7 +695,7 @@ async function handleRequest(
             <meta charset="UTF-8">
 
             <title>
-                Offline
+                Portfolio Offline
             </title>
 
             <style>
@@ -529,12 +705,14 @@ async function handleRequest(
                     background:
                         #0f172a;
 
-                    color: white;
+                    color:
+                        white;
 
                     font-family:
                         Arial;
 
-                    text-align: center;
+                    text-align:
+                        center;
 
                     padding:
                         100px 20px;
@@ -558,7 +736,7 @@ async function handleRequest(
 
             <p>
                 Connect to the internet once
-                to cache this portfolio.
+                to load the portfolio.
             </p>
 
         </body>
@@ -581,3 +759,56 @@ async function handleRequest(
     );
 
 }
+
+
+
+/*
+=================================================
+ MESSAGE API
+
+ index.html asks:
+
+ "What version am I using?"
+=================================================
+*/
+
+self.addEventListener(
+    "message",
+    event => {
+
+
+        if (
+            event.data &&
+            event.data.type ===
+            "GET_VERSION"
+        ) {
+
+
+            getStoredVersion()
+                .then(
+                    version => {
+
+
+                        if (
+                            event.ports &&
+                            event.ports[0]
+                        ) {
+
+
+                            event.ports[0]
+                                .postMessage({
+
+                                    version:
+                                        version
+
+                                });
+
+                        }
+
+                    }
+                );
+
+        }
+
+    }
+);
